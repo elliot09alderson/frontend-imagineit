@@ -32,19 +32,28 @@ const CommunityPage = () => {
     };
   }, []);
 
-  const images = [
-    { id: 1, src: "/sample/An androgynous face with closed eyes and windblown….jpeg", category: "PORTRAIT" },
-    { id: 2, src: "/sample/Black and White Close-Up Portrait of an Asian Woman_ Timeless Elegance.jpeg", category: "B&W" },
-    { id: 3, src: "/sample/The Secret to an Unforgettable Acting Portfolio_ Maximise Your Auditions with Powerful Expression - Studio TingTing.jpeg", category: "STUDIO" },
-    { id: 4, src: "/sample/Ultra-realistic portrait of a young woman with….jpeg", category: "REALISM" },
-    { id: 5, src: "/sample/_ (1).jpeg", category: "FASHION" },
-    { id: 6, src: "/sample/_ (2).jpeg", category: "EDITORIAL" },
-    { id: 7, src: "/sample/_ (3).jpeg", category: "ARTISTIC" },
-    { id: 8, src: "/sample/_ (4).jpeg", category: "CONCEPT" },
-    { id: 9, src: "/sample/_.jpeg", category: "STYLE" },
-    { id: 10, src: "/sample/self photography.jpeg", category: "SELFIE" },
-    { id: 11, src: "/sample/🌅 Современная мода_ устойчивый стиль на закате….jpeg", category: "MODERN" }
-  ];
+  const [images, setImages] = React.useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5001/api/user/community')
+        .then(res => res.json())
+        .then(data => {
+            if (Array.isArray(data)) {
+                setImages(data);
+            } else {
+                console.error("Expected array but got:", data);
+                setImages([]);
+            }
+            // Update scroll after data load
+            setTimeout(() => {
+                if (scrollRef.current) {
+                    // Force a resize event or re-init if needed, but usually Locomotive Scroll needs a kick
+                    window.dispatchEvent(new Event('resize'));
+                }
+            }, 500);
+        })
+        .catch(err => console.error("Failed to fetch community posts", err));
+  }, []);
 
   return (
     <div data-scroll-container ref={scrollRef} className="bg-art-black min-h-screen text-white pt-24 px-4 md:px-10">
@@ -66,24 +75,44 @@ const CommunityPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-20" data-scroll-section>
         {images.map((img, index) => (
             <div 
-                key={img.id} 
-                className={`relative overflow-hidden aspect-[3/4] ${index % 2 === 0 ? 'mt-0' : 'mt-20'}`}
+                key={img._id} 
+                className={`relative overflow-hidden aspect-[3/4] ${index % 2 === 0 ? 'mt-0' : 'mt-20'} group rounded-xl`}
                 data-scroll
                 data-scroll-speed={index % 2 === 0 ? "1" : "2"}
             >
                 <motion.div
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full h-full"
+                    className="w-full h-full relative"
                 >
-                    <img 
-                        src={img.src} 
-                        alt={img.category} 
-                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                    />
-                    <div className="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black/80 to-transparent w-full opacity-0 hover:opacity-100 transition-opacity duration-300">
-                        <h3 className="text-xl font-serif">{img.category}</h3>
-                        <p className="text-sm text-gray-300">@artist_{img.id}</p>
+                    {/* Original / Uploaded Image (Visible on Hover) */}
+                    <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <img 
+                            src={img.original_image_url} 
+                            alt="Original" 
+                            className="w-full h-full object-cover grayscale brightness-90"
+                        />
+                        <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold tracking-wider border border-white/20">
+                            ORIGINAL
+                        </div>
+                    </div>
+
+                    {/* Generated Image (Default Visible) */}
+                    <div className="absolute inset-0 z-0 opacity-100 group-hover:opacity-0 transition-opacity duration-500">
+                        <img 
+                            src={img.generated_image_url} 
+                            alt={img.style_prompt} 
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute top-4 left-4 bg-art-accent/80 text-black backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold tracking-wider">
+                            GENERATED
+                        </div>
+                    </div>
+
+                    {/* Info Overlay */}
+                    <div className="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent w-full opacity-100 transition-opacity duration-300">
+                        <h3 className="text-xl font-serif line-clamp-1">{img.style_prompt || "Artistic Creation"}</h3>
+                        <p className="text-sm text-gray-300">@artist_{img.user?.toString().slice(-4)}</p>
                     </div>
                 </motion.div>
             </div>

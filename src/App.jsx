@@ -8,6 +8,12 @@ import LiteEditPage from './pages/LiteEditPage';
 import EditPage from './pages/EditPage';
 import AdminPage from './pages/AdminPage';
 import ComingSoonPage from './pages/ComingSoonPage';
+import PricingPage from './pages/PricingPage';
+import Footer from './components/Footer';
+import PrivacyPolicy from './pages/legal/PrivacyPolicy';
+import TermsAndConditions from './pages/legal/TermsAndConditions';
+import RefundPolicy from './pages/legal/RefundPolicy';
+import ContactUs from './pages/legal/ContactUs';
 
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
@@ -51,9 +57,15 @@ function App() {
                 </AdminRoute>
               }
             />
-            <Route path="/product" element={<ComingSoonPage title="PRODUCT" />} />
+          <Route path="/product" element={<ComingSoonPage title="PRODUCT" />} />
             <Route path="/corporate" element={<ComingSoonPage title="CORPORATE" />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/refund" element={<RefundPolicy />} />
+            <Route path="/contact" element={<ContactUs />} />
           </Routes>
+          <Footer />
         </div>
       </Router>
     </AuthProvider>

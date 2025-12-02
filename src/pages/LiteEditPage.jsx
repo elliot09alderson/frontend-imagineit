@@ -236,16 +236,29 @@ const LiteEditPage = () => {
                     >
                         Start Over
                     </button>
-                    <a 
-                        href={resultImage} 
-                        download="art-ai-lite-generated.jpg"
-                        target="_blank"
-                        rel="noreferrer"
+                    <button 
+                        onClick={async () => {
+                            try {
+                                const response = await fetch(resultImage);
+                                const blob = await response.blob();
+                                const url = window.URL.createObjectURL(blob);
+                                const link = document.createElement('a');
+                                link.href = url;
+                                link.download = `art-ai-lite-${Date.now()}.jpg`;
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                                window.URL.revokeObjectURL(url);
+                            } catch (err) {
+                                console.error("Download failed", err);
+                                window.open(resultImage, '_blank');
+                            }
+                        }}
                         className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2"
                     >
                         <Download size={20} />
                         Download
-                    </a>
+                    </button>
                 </div>
             </div>
         )}

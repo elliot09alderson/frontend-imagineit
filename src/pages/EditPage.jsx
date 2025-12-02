@@ -7,6 +7,7 @@ const EditPage = () => {
   const { token } = useAuth();
   const [step, setStep] = useState(1); // 1: Upload, 2: Analyzing, 3: Selection, 4: Generating, 5: Result
   const [userImage, setUserImage] = useState(null);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
   const [credits, setCredits] = useState(1);
   const [matches, setMatches] = useState([]);
   const [selectedMatch, setSelectedMatch] = useState(null);
@@ -57,8 +58,7 @@ const EditPage = () => {
       
       setPoseCategory(data.pose);
       setMatches(data.matches);
-      // Update userImage with the Cloudinary URL returned from backend for consistency
-      // setUserImage(data.userImageUrl); 
+      setUploadedImageUrl(data.userImageUrl); // Store Cloudinary URL for generation
       setStep(3);
     } catch (err) {
       console.error("Analysis failed", err);
@@ -67,7 +67,7 @@ const EditPage = () => {
   };
 
   const generateEdit = async () => {
-    if (!selectedMatch || credits < 1) return;
+    if (!selectedMatch || credits < 2) return;
     
     setStep(4);
     try {
@@ -80,7 +80,7 @@ const EditPage = () => {
         body: JSON.stringify({ 
           // email: 'demo@user.com',
           preedited_prompt: selectedMatch.preedited_prompt,
-          userImageUrl: userImage 
+          userImageUrl: uploadedImageUrl // Use Cloudinary URL, not Base64 
         })
       });
       const data = await res.json();
@@ -156,10 +156,15 @@ const EditPage = () => {
                     {selectedMatch && (
                         <button 
                             onClick={generateEdit}
-                            className="px-8 py-3 bg-art-accent text-black font-bold rounded-full hover:bg-white transition-colors flex items-center gap-2"
+                            disabled={credits < 2}
+                            className={`px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all ${
+                                credits >= 2 
+                                ? 'bg-art-accent text-black hover:bg-white' 
+                                : 'bg-white/10 text-gray-500 cursor-not-allowed'
+                            }`}
                         >
                             <Wand2 size={20} />
-                            Generate (1 Credit)
+                            Generate (2 Credits)
                         </button>
                     )}
                 </div>
@@ -222,16 +227,29 @@ const EditPage = () => {
                     >
                         Start Over
                     </button>
-                    <a 
-                        href={resultImage} 
-                        download="art-ai-generated.jpg"
-                        target="_blank"
-                        rel="noreferrer"
+                    <button 
+                        onClick={async () => {
+                            try {
+                                const response = await fetch(resultImage);
+                                const blob = await response.blob();
+                                const url = window.URL.createObjectURL(blob);
+                                const link = document.createElement('a');
+                                link.href = url;
+                                link.download = `art-ai-generated-${Date.now()}.jpg`;
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                                window.URL.revokeObjectURL(url);
+                            } catch (err) {
+                                console.error("Download failed", err);
+                                window.open(resultImage, '_blank');
+                            }
+                        }}
                         className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2"
                     >
                         <Download size={20} />
                         Download High-Res
-                    </a>
+                    </button>
                 </div>
             </div>
         )}

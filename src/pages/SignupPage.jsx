@@ -46,7 +46,7 @@ const SignupPage = () => {
                             required
                         />
                     </div>
-                    <MagneticButton>
+                    <MagneticButton className="w-full">
                         <button type="submit" className="w-full py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors">
                             Sign Up
                         </button>

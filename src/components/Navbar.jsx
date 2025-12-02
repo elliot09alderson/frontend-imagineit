@@ -27,6 +27,7 @@ const Navbar = () => {
           <Link to="/" className={desktopLinkClass('/')}>Home</Link>
           <Link to="/product" className={desktopLinkClass('/product')}>Product</Link>
           <Link to="/corporate" className={desktopLinkClass('/corporate')}>Corporate</Link>
+          <Link to="/pricing" className={desktopLinkClass('/pricing')}>Pricing</Link>
           <Link to="/community" className={desktopLinkClass('/community')}>Community</Link>
           {isAuthenticated ? (
               <>
@@ -54,6 +55,7 @@ const Navbar = () => {
             <Link to="/" onClick={toggleMenu} className={linkClass('/')}>Home</Link>
             <Link to="/product" onClick={toggleMenu} className={linkClass('/product')}>Product</Link>
             <Link to="/corporate" onClick={toggleMenu} className={linkClass('/corporate')}>Corporate</Link>
+            <Link to="/pricing" onClick={toggleMenu} className={linkClass('/pricing')}>Pricing</Link>
             <Link to="/community" onClick={toggleMenu} className={linkClass('/community')}>Community</Link>
             {isAuthenticated ? (
                 <>
