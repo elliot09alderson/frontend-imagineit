@@ -161,16 +161,21 @@ const LiteEditPage = () => {
                     </div>
                     {selectedMatch && (
                         <button 
-                            onClick={generateLiteEdit}
-                            disabled={credits < 1}
+                            onClick={() => {
+                                if (credits < 1) {
+                                    navigate('/pricing');
+                                } else {
+                                    generateLiteEdit();
+                                }
+                            }}
                             className={`px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all ${
                                 credits >= 1 
                                 ? 'bg-art-accent text-black hover:scale-105' 
-                                : 'bg-white/10 text-gray-500 cursor-not-allowed'
+                                : 'bg-red-500 text-white hover:bg-red-600'
                             }`}
                         >
                             <Wand2 size={20} />
-                            Generate Lite (1 Credit)
+                            {credits >= 1 ? 'Generate Lite (1 Credit)' : 'Buy Credits'}
                         </button>
                     )}
                 </div>

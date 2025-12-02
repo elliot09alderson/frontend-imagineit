@@ -157,16 +157,21 @@ const EditPage = () => {
                     </div>
                     {selectedMatch && (
                         <button 
-                            onClick={generateEdit}
-                            disabled={credits < 2}
+                            onClick={() => {
+                                if (credits < 2) {
+                                    navigate('/pricing');
+                                } else {
+                                    generateEdit();
+                                }
+                            }}
                             className={`px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all ${
                                 credits >= 2 
                                 ? 'bg-art-accent text-black hover:bg-white' 
-                                : 'bg-white/10 text-gray-500 cursor-not-allowed'
+                                : 'bg-red-500 text-white hover:bg-red-600'
                             }`}
                         >
                             <Wand2 size={20} />
-                            Generate (2 Credits)
+                            {credits >= 2 ? 'Generate (2 Credits)' : 'Buy Credits'}
                         </button>
                     )}
                 </div>

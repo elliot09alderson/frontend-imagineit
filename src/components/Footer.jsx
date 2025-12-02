@@ -46,7 +46,7 @@ const Footer = () => {
                     <div className="flex space-x-4 mb-4">
                         <a href="#" className="hover:text-art-accent transition-colors"><Twitter size={20} /></a>
                         <a href="#" className="hover:text-art-accent transition-colors"><Instagram size={20} /></a>
-                        <a href="#" className="hover:text-art-accent transition-colors"><Linkedin size={20} /></a>
+                        <a href="https://www.linkedin.com/in/pratik-verma-1a0970192/" target="_blank" rel="noopener noreferrer" className="hover:text-art-accent transition-colors"><Linkedin size={20} /></a>
                     </div>
                     <a href="mailto:support@imagineit.cloud" className="flex items-center gap-2 text-sm hover:text-art-accent transition-colors">
                         <Mail size={16} /> support@imagineit.cloud
