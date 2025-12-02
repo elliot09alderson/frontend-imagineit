@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
+import { API_URL } from '../config';
 
 const AuthContext = createContext();
 
@@ -18,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
     const loadUser = async () => {
         try {
-            const res = await fetch('http://localhost:5001/api/auth/user', {
+            const res = await fetch(`${API_URL}/auth/user`, {
                 headers: {
                     'x-auth-token': token
                 }
@@ -39,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const login = async (email, password) => {
-        const res = await fetch('http://localhost:5001/api/auth/login', {
+        const res = await fetch(`${API_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -69,7 +70,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const signup = async (email, password) => {
-        const res = await fetch('http://localhost:5001/api/auth/signup', {
+        const res = await fetch(`${API_URL}/auth/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

@@ -7,6 +7,7 @@ import MagneticButton from '../components/MagneticButton';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import { API_URL } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,7 +42,7 @@ const LandingPage = () => {
     }
     setLoading(true);
     try {
-        const res = await fetch('http://localhost:5001/api/forms/proposal', {
+        const res = await fetch(`${API_URL}/forms/proposal`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(proposal)
@@ -67,7 +68,7 @@ const LandingPage = () => {
         return;
     }
     try {
-        const res = await fetch('http://localhost:5001/api/forms/subscribe', {
+        const res = await fetch(`${API_URL}/forms/subscribe`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ contact: subscriberContact })

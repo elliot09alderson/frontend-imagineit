@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Check, Zap } from 'lucide-react';
+import { Check, Zap, Crown } from 'lucide-react';
+import { API_URL } from '../config';
 
 const PricingPage = () => {
     const { user, refreshCredits } = useAuth();
@@ -33,7 +34,7 @@ const PricingPage = () => {
 
         try {
             // 1. Create Order
-            const orderResponse = await fetch('http://localhost:5001/api/payment/create-order', {
+            const orderResponse = await fetch(`${API_URL}/payment/create-order`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ const PricingPage = () => {
                 handler: async function (response) {
                     try {
                         // 3. Verify Payment
-                        const verifyResponse = await fetch('http://localhost:5001/api/payment/verify-payment', {
+                        const verifyResponse = await fetch(`${API_URL}/payment/verify-payment`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

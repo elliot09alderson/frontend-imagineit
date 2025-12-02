@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Upload, Wand2, Download, Loader } from 'lucide-react';
 import MagneticButton from '../components/MagneticButton';
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
 
 const LiteEditPage = () => {
@@ -16,7 +18,7 @@ const LiteEditPage = () => {
   // Fetch credits on load
   useEffect(() => {
     if (token) {
-        fetch('http://localhost:5001/api/user/credits', {
+        fetch(`${API_URL}/user/credits`, {
             headers: { 'x-auth-token': token }
         })
         .then(res => res.json())
@@ -46,7 +48,7 @@ const LiteEditPage = () => {
       formData.append('image', file);
       // formData.append('email', 'demo@user.com');
 
-      const res = await fetch('http://localhost:5001/api/user/analyze-pose', {
+      const res = await fetch(`${API_URL}/user/analyze-pose`, {
         method: 'POST',
         headers: { 'x-auth-token': token },
         body: formData
@@ -70,7 +72,7 @@ const LiteEditPage = () => {
     
     setStep(4);
     try {
-      const res = await fetch('http://localhost:5001/api/user/generate-edit-lite', {
+      const res = await fetch(`${API_URL}/user/generate-edit-lite`, {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',

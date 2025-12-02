@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
 import { Upload, Save, Loader, Trash2 } from 'lucide-react';
 
@@ -26,7 +28,7 @@ const AdminPage = () => {
 
   const fetchAssets = async () => {
     try {
-      const res = await fetch('http://localhost:5001/api/admin/assets', {
+      const res = await fetch(`${API_URL}/admin/assets`, {
         headers: {
             'x-auth-token': token
         }
@@ -66,7 +68,7 @@ const AdminPage = () => {
         const formData = new FormData();
         formData.append('image', file);
 
-        const res = await fetch('http://localhost:5001/api/admin/extract-prompt', {
+        const res = await fetch(`${API_URL}/admin/extract-prompt`, {
             method: 'POST',
             headers: {
                 'x-auth-token': token
@@ -107,7 +109,7 @@ const AdminPage = () => {
       formDataToSend.append('preedited_prompt', formData.preedited_prompt);
       formDataToSend.append('admin_notes', formData.admin_notes);
 
-      const res = await fetch('http://localhost:5001/api/admin/assets', {
+      const res = await fetch(`${API_URL}/admin/assets`, {
         method: 'POST',
         headers: {
             'x-auth-token': token
@@ -135,7 +137,7 @@ const AdminPage = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this asset? This action cannot be undone.")) {
       try {
-        const res = await fetch(`http://localhost:5001/api/admin/assets/${id}`, {
+        const res = await fetch(`${API_URL}/admin/assets/${id}`, {
           method: 'DELETE',
           headers: {
             'x-auth-token': token
@@ -289,7 +291,7 @@ const AdminPage = () => {
                     onClick={async () => {
                         if (confirm("Run cleanup to fix base64 URLs? This might take a while.")) {
                             try {
-                                const res = await fetch('http://localhost:5001/api/admin/cleanup-community', {
+                                const res = await fetch(`${API_URL}/admin/cleanup-community`, {
                                     method: 'POST',
                                     headers: { 'x-auth-token': token }
                                 });
@@ -323,7 +325,7 @@ const CommunityManager = ({ token }) => {
 
     const fetchPosts = async () => {
         try {
-            const res = await fetch('http://localhost:5001/api/user/community');
+            const res = await fetch(`${API_URL}/user/community`);
             const data = await res.json();
             setPosts(data);
         } catch (err) {
@@ -334,7 +336,7 @@ const CommunityManager = ({ token }) => {
     const handleDelete = async (id) => {
         if (window.confirm("Delete this community post?")) {
             try {
-                const res = await fetch(`http://localhost:5001/api/admin/community/${id}`, {
+                const res = await fetch(`${API_URL}/admin/community/${id}`, {
                     method: 'DELETE',
                     headers: { 'x-auth-token': token }
                 });

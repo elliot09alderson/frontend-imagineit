@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
 import { motion } from 'framer-motion';
+import { API_URL } from '../config';
 
 const CommunityPage = () => {
   const scrollRef = useRef(null);
@@ -35,7 +36,7 @@ const CommunityPage = () => {
   const [images, setImages] = React.useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/user/community')
+    fetch(`${API_URL}/user/community`)
         .then(res => res.json())
         .then(data => {
             if (Array.isArray(data)) {
