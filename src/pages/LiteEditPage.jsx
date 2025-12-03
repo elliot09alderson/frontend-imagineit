@@ -19,15 +19,15 @@ const LiteEditPage = () => {
 
   // Fetch credits on load
   useEffect(() => {
-    if (token) {
+    if (accessToken) {
         apiFetch(`${API_URL}/user/credits`, {
-            headers: { 'x-auth-token': token }
+            headers: { 'x-auth-token': accessToken }
         })
         .then(res => res.json())
         .then(data => setCredits(data.credits))
         .catch(err => console.error("Failed to fetch credits", err));
     }
-  }, [token]);
+  }, [accessToken]);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -52,7 +52,7 @@ const LiteEditPage = () => {
 
       const res = await apiFetch(`${API_URL}/user/analyze-pose`, {
         method: 'POST',
-        headers: { 'x-auth-token': token },
+        headers: { 'x-auth-token': accessToken },
         body: formData
       });
       const data = await res.json();

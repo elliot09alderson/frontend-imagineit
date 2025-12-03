@@ -298,7 +298,7 @@ const AdminPage = () => {
                             try {
                                 const res = await apiFetch(`${API_URL}/admin/cleanup-community`, {
                                     method: 'POST',
-                                    headers: { 'x-auth-token': token }
+                                    headers: { 'x-auth-token': accessToken }
                                 });
                                 const data = await res.json();
                                 alert(data.message);
