@@ -26,7 +26,7 @@ const LoginPage = () => {
     const [error, setError] = useState('');
     const [step, setStep] = useState(1); // 1: Credentials, 2: OTP
     const [email, setEmail] = useState('');
-    const { login, verifyOtp } = useAuth();
+    const { login, verifyOtp, resendOtp } = useAuth();
     const navigate = useNavigate();
 
     const handleLogin = async (values, { setSubmitting }) => {
@@ -50,6 +50,15 @@ const LoginPage = () => {
             setError(err.message);
         } finally {
             setSubmitting(false);
+        }
+    };
+    
+    const handleResendOtp = async () => {
+        try {
+            await resendOtp(email);
+            alert('OTP resent successfully');
+        } catch (err) {
+            setError(err.message);
         }
     };
 
@@ -141,6 +150,13 @@ const LoginPage = () => {
                                                 {isSubmitting ? 'Verifying...' : 'Verify OTP'}
                                             </button>
                                         </MagneticButton>
+                                        <button 
+                                            type="button" 
+                                            onClick={handleResendOtp}
+                                            className="w-full text-sm text-art-accent hover:underline transition-colors mb-2 mt-4"
+                                        >
+                                            Resend OTP
+                                        </button>
                                         <button 
                                             type="button" 
                                             onClick={() => setStep(1)}

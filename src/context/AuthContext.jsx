@@ -113,6 +113,20 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const resendOtp = async (email) => {
+        const res = await apiFetch(`${API_URL}/auth/resend-otp`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (res.ok) {
+            return data;
+        } else {
+            throw new Error(data.message || data.msg || 'Failed to resend OTP');
+        }
+    };
+
     const forgotPassword = async (email) => {
         const res = await apiFetch(`${API_URL}/auth/forgot-password`, {
             method: 'POST',
@@ -175,7 +189,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, accessToken, loading, isAuthenticated, login, signup, logout, verifyOtp, verifyEmail, forgotPassword, resetPassword }}>
+        <AuthContext.Provider value={{ user, accessToken, loading, isAuthenticated, login, signup, logout, verifyOtp, resendOtp, verifyEmail, forgotPassword, resetPassword }}>
             {children}
         </AuthContext.Provider>
     );
