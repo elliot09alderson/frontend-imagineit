@@ -31,7 +31,9 @@ const AdminPage = () => {
   const fetchAssets = async () => {
     try {
       const res = await apiFetch(`${API_URL}/admin/assets`, {
-        // apiFetch is assumed to handle 'x-auth-token' automatically
+        headers: {
+            'x-auth-token': accessToken
+        }
       });
       const data = await res.json();
       if (Array.isArray(data)) {
