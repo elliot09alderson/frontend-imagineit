@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Phone, CheckCircle, AlertCircle } from 'lucide-react';
 import { API_URL } from '../../config';
+import { apiFetch } from '../../utils/api';
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const ContactUs = () => {
         setStatus({ loading: true, success: false, error: null });
 
         try {
-            const response = await fetch(`${API_URL}/contact`, {
+            const response = await apiFetch(`${API_URL}/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

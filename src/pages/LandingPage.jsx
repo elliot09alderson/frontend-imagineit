@@ -9,6 +9,7 @@ import 'aos/dist/aos.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { API_URL } from '../config';
 import SEO from '../components/SEO';
+import { apiFetch } from '../utils/api';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,7 +44,7 @@ const LandingPage = () => {
     }
     setLoading(true);
     try {
-        const res = await fetch(`${API_URL}/forms/proposal`, {
+        const res = await apiFetch(`${API_URL}/forms/proposal`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(proposal)
@@ -69,7 +70,7 @@ const LandingPage = () => {
         return;
     }
     try {
-        const res = await fetch(`${API_URL}/forms/subscribe`, {
+        const res = await apiFetch(`${API_URL}/forms/subscribe`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ contact: subscriberContact })

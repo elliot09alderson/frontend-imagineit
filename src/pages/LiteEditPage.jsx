@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
 import SEO from '../components/SEO';
+import { apiFetch } from '../utils/api';
 
 const LiteEditPage = () => {
   const { token } = useAuth();
@@ -19,7 +20,7 @@ const LiteEditPage = () => {
   // Fetch credits on load
   useEffect(() => {
     if (token) {
-        fetch(`${API_URL}/user/credits`, {
+        apiFetch(`${API_URL}/user/credits`, {
             headers: { 'x-auth-token': token }
         })
         .then(res => res.json())
@@ -49,7 +50,7 @@ const LiteEditPage = () => {
       formData.append('image', file);
       // formData.append('email', 'demo@user.com');
 
-      const res = await fetch(`${API_URL}/user/analyze-pose`, {
+      const res = await apiFetch(`${API_URL}/user/analyze-pose`, {
         method: 'POST',
         headers: { 'x-auth-token': token },
         body: formData
@@ -73,7 +74,7 @@ const LiteEditPage = () => {
     
     setStep(4);
     try {
-      const res = await fetch(`${API_URL}/user/generate-edit-lite`, {
+      const res = await apiFetch(`${API_URL}/user/generate-edit-lite`, {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
 import SEO from '../components/SEO';
+import { apiFetch } from '../utils/api';
 
 const EditPage = () => {
   const { token } = useAuth();
@@ -20,7 +21,7 @@ const EditPage = () => {
   // Fetch credits on load
   useEffect(() => {
     if (token) {
-        fetch(`${API_URL}/user/credits`, {
+        apiFetch(`${API_URL}/user/credits`, {
             headers: { 'x-auth-token': token }
         })
         .then(res => res.json())
@@ -50,7 +51,7 @@ const EditPage = () => {
       formData.append('image', file);
       // formData.append('email', 'demo@user.com');
 
-      const res = await fetch(`${API_URL}/user/analyze-pose`, {
+      const res = await apiFetch(`${API_URL}/user/analyze-pose`, {
         method: 'POST',
         headers: { 'x-auth-token': token },
         body: formData // No Content-Type header needed for FormData
@@ -74,7 +75,7 @@ const EditPage = () => {
     
     setStep(4);
     try {
-      const res = await fetch(`${API_URL}/user/generate-edit`, {
+      const res = await apiFetch(`${API_URL}/user/generate-edit`, {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',

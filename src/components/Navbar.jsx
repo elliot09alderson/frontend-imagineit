@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between items-center mix-blend-difference text-white">
-        <Link to="/" className="text-2xl font-serif font-bold tracking-tighter">
+        <Link to="/" className="text-2xl font-serif font-bold tracking-tighter hidden md:block">
           imagineit.cloud
         </Link>
         {/* Desktop Menu */}
