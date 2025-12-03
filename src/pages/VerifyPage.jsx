@@ -10,8 +10,13 @@ const VerifyPage = () => {
     const [status, setStatus] = useState('verifying'); // verifying, success, error
     const [message, setMessage] = useState('Verifying your email...');
 
+    const verificationAttempted = React.useRef(false);
+
     useEffect(() => {
         const verify = async () => {
+            if (verificationAttempted.current) return;
+            verificationAttempted.current = true;
+
             try {
                 const res = await verifyEmail(token);
                 setStatus('success');

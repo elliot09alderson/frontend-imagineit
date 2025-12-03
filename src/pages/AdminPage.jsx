@@ -20,13 +20,13 @@ const AdminPage = () => {
   const [autoExtract, setAutoExtract] = useState(true);
   const [extracting, setExtracting] = useState(false);
 
-  const { token } = useAuth();
+  const { accessToken } = useAuth();
 
   useEffect(() => {
-    if (token) {
+    if (accessToken) {
         fetchAssets();
     }
-  }, [token]);
+  }, [accessToken]);
 
   const fetchAssets = async () => {
     try {
@@ -71,7 +71,7 @@ const AdminPage = () => {
         const res = await apiFetch(`${API_URL}/admin/extract-prompt`, {
             method: 'POST',
             headers: {
-                'x-auth-token': token
+                'x-auth-token': accessToken
             },
             body: formData
         });
@@ -112,7 +112,7 @@ const AdminPage = () => {
       const res = await apiFetch(`${API_URL}/admin/assets`, {
         method: 'POST',
         headers: {
-            'x-auth-token': token
+            'x-auth-token': accessToken
         },
         body: formDataToSend
       });
@@ -140,7 +140,7 @@ const AdminPage = () => {
         const res = await apiFetch(`${API_URL}/admin/assets/${id}`, {
           method: 'DELETE',
           headers: {
-            'x-auth-token': token
+            'x-auth-token': accessToken
           }
         });
         if (res.ok) {
@@ -313,7 +313,7 @@ const AdminPage = () => {
                     Fix Base64 URLs
                 </button>
             </div>
-            <CommunityManager token={token} />
+            <CommunityManager token={accessToken} />
         </div>
 
       </div>

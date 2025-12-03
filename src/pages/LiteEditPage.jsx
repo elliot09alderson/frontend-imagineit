@@ -8,7 +8,7 @@ import SEO from '../components/SEO';
 import { apiFetch } from '../utils/api';
 
 const LiteEditPage = () => {
-  const { token } = useAuth();
+  const { accessToken } = useAuth();
   const [step, setStep] = useState(1); // 1: Upload, 2: Analyzing, 3: Selection, 4: Generating, 5: Result
   const [userImage, setUserImage] = useState(null);
   const [credits, setCredits] = useState(0);
@@ -78,7 +78,7 @@ const LiteEditPage = () => {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',
-            'x-auth-token': token
+            'x-auth-token': accessToken
         },
         body: JSON.stringify({ 
           // email: 'demo@user.com',

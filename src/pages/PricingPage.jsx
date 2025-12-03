@@ -6,7 +6,7 @@ import SEO from '../components/SEO';
 import { apiFetch } from '../utils/api';
 
 const PricingPage = () => {
-    const { user, refreshCredits, token } = useAuth(); // Added token here
+    const { user, refreshCredits, accessToken } = useAuth(); // Added token here
     const [loading, setLoading] = useState(false);
 
     const loadRazorpay = () => {
@@ -40,7 +40,7 @@ const PricingPage = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-auth-token': localStorage.getItem('token')
+                    'x-auth-token': accessToken
                 },
                 body: JSON.stringify({ amount, credits })
             });
@@ -63,7 +63,7 @@ const PricingPage = () => {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'x-auth-token': localStorage.getItem('token')
+                                'x-auth-token': accessToken
                             },
                             body: JSON.stringify({
                                 razorpay_order_id: response.razorpay_order_id,
