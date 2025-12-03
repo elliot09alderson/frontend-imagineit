@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
 import { Upload, Save, Loader, Trash2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const AdminPage = () => {
   const [assets, setAssets] = useState([]);
@@ -157,6 +158,11 @@ const AdminPage = () => {
 
   return (
     <div className="min-h-screen bg-art-black text-white p-10 pt-32">
+      <SEO 
+        title="Admin Dashboard" 
+        description="Admin dashboard for managing assets and community posts."
+        keywords="admin, dashboard, asset management"
+      />
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
         
         {/* Upload Form */}

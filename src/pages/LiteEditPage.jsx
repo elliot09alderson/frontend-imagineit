@@ -4,6 +4,7 @@ import MagneticButton from '../components/MagneticButton';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
+import SEO from '../components/SEO';
 
 const LiteEditPage = () => {
   const { token } = useAuth();
@@ -102,6 +103,11 @@ const LiteEditPage = () => {
 
   return (
     <div className="min-h-screen bg-art-black text-white pt-24 md:pt-32 px-4 md:px-10 pb-20">
+      <SEO 
+        title="Lite Studio" 
+        description="Quick edits using our lightweight AI model. Fast and efficient."
+        keywords="lite editor, quick edit, fast photo editor, AI tools"
+      />
       
       {/* Header & Credits */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center max-w-7xl mx-auto mb-8 md:mb-10 gap-4">

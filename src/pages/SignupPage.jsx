@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import MagneticButton from '../components/MagneticButton';
+import SEO from '../components/SEO';
 
 const SignupPage = () => {
     const [email, setEmail] = useState('');
@@ -22,6 +23,11 @@ const SignupPage = () => {
 
     return (
         <div className="min-h-screen bg-art-black text-white flex items-center justify-center px-4">
+            <SEO 
+                title="Sign Up" 
+                description="Create a new account to start generating amazing AI art."
+                keywords="sign up, register, create account, new user"
+            />
             <div className="max-w-md w-full bg-white/5 p-8 rounded-3xl border border-white/10 fade-up">
                 <h2 className="text-3xl font-serif mb-6 text-center">Create Account</h2>
                 {error && <div className="bg-red-500/20 text-red-200 p-3 rounded-lg mb-4 text-sm">{error}</div>}

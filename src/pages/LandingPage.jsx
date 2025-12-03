@@ -8,6 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { API_URL } from '../config';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -203,6 +204,11 @@ const LandingPage = () => {
 
   return (
     <div className="bg-art-black min-h-screen text-white">
+      <SEO 
+        title="Home" 
+        description="Redefine reality with our AI-powered image editor. Create stunning visuals with ease."
+        keywords="nano banana image edit, nano banana, nano banana pro, gemini image edit, ai image edit, AI image editor, photo editing, creative tools, online editor"
+      />
       
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://imagineit.cloud/sitemap.xml

@@ -4,6 +4,7 @@ import MagneticButton from '../components/MagneticButton';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../config';
 import { useAuth } from '../context/AuthContext';
+import SEO from '../components/SEO';
 
 const EditPage = () => {
   const { token } = useAuth();
@@ -97,6 +98,11 @@ const EditPage = () => {
 
   return (
     <div className="min-h-screen bg-art-black text-white pt-24 md:pt-32 px-4 md:px-10 pb-20">
+      <SEO 
+        title="Studio" 
+        description="Upload your photo and let our AI analyze the pose to suggest outstanding artistic styles."
+        keywords="AI studio, pose detection, style transfer, photo editor"
+      />
       
       {/* Header & Credits */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center max-w-7xl mx-auto mb-8 md:mb-10 gap-4">

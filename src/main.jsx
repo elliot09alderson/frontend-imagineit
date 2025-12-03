@@ -5,8 +5,12 @@ import App from './App.jsx'
 import './index.css'
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 
+import { HelmetProvider } from 'react-helmet-async'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
   </React.StrictMode>,
 )

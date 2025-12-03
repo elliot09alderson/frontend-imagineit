@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Check, Zap, Crown } from 'lucide-react';
 import { API_URL } from '../config';
+import SEO from '../components/SEO';
 
 const PricingPage = () => {
     const { user, refreshCredits } = useAuth();
@@ -106,6 +107,11 @@ const PricingPage = () => {
 
     return (
         <div className="min-h-screen pt-24 px-4 bg-black text-white flex flex-col items-center">
+            <SEO 
+                title="Pricing" 
+                description="Affordable credit packs for high-quality AI image editing. Choose the plan that fits your needs."
+                keywords="pricing, credits, AI art cost, affordable image editor"
+            />
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
                 Get More <span className="text-art-accent">Credits</span>
             </h1>

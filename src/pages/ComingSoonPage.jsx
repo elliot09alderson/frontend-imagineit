@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const ComingSoonPage = ({ title }) => {
   return (
     <div className="min-h-screen bg-art-black flex flex-col items-center justify-center text-white relative overflow-hidden">
+      <SEO 
+        title={title || "Coming Soon"} 
+        description="This feature is currently under development and will be available shortly."
+        keywords="coming soon, new feature, under development"
+      />
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-art-accent blur-[150px] rounded-full mix-blend-screen animate-pulse"></div>

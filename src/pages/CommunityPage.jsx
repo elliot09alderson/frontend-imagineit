@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
 import { motion } from 'framer-motion';
 import { API_URL } from '../config';
+import SEO from '../components/SEO';
 
 const CommunityPage = () => {
   const scrollRef = useRef(null);
@@ -58,6 +59,11 @@ const CommunityPage = () => {
 
   return (
     <div data-scroll-container ref={scrollRef} className="bg-art-black min-h-screen text-white pt-24 px-4 md:px-10">
+      <SEO 
+        title="Community" 
+        description="Explore amazing AI-generated art from our community. Get inspired and share your own creations."
+        keywords="AI art community, digital art gallery, inspiration, user creations"
+      />
       
       <div className="mb-20 text-center" data-scroll-section>
         <motion.h1 
