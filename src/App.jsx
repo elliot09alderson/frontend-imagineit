@@ -15,6 +15,7 @@ import PrivacyPolicy from './pages/legal/PrivacyPolicy';
 import TermsAndConditions from './pages/legal/TermsAndConditions';
 import RefundPolicy from './pages/legal/RefundPolicy';
 import ContactUs from './pages/legal/ContactUs';
+import ShippingPolicy from './pages/legal/ShippingPolicy';
 
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
@@ -73,6 +74,7 @@ function App() {
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsAndConditions />} />
               <Route path="/refund" element={<RefundPolicy />} />
+              <Route path="/shipping" element={<ShippingPolicy />} />
               <Route path="/contact" element={<ContactUs />} />
             </Routes>
             <Footer />

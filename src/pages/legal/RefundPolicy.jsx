@@ -4,7 +4,7 @@ const RefundPolicy = () => {
     return (
         <div className="min-h-screen pt-24 px-6 pb-12 bg-black text-gray-300 font-sans">
             <div className="max-w-3xl mx-auto">
-                <h1 className="text-4xl font-bold text-white mb-8">Refund and Cancellation Policy</h1>
+                <h1 className="text-4xl font-bold text-white mb-8">Cancellation & Refund Policy</h1>
                 <p className="text-sm text-gray-500 mb-8">Last Updated: {new Date().toLocaleDateString()}</p>
 
                 <div className="space-y-6">
