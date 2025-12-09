@@ -244,7 +244,7 @@ const LandingPage = () => {
             REALITY
           </h1>
           <p className="hero-text mt-8 text-xl font-sans tracking-widest uppercase">
-            AI-Powered Image Manipulation
+            AI-Powered Image Manipulation & Editing Services
           </p>
         </div>
       </section>
@@ -255,9 +255,15 @@ const LandingPage = () => {
             <div className="space-y-8 fade-up">
                 <h2 className="text-6xl font-serif">Precision Tools</h2>
                 <p className="text-gray-400 text-lg leading-relaxed">
-                    Our AI understands the context of your image, allowing for seamless edits that look completely natural. 
-                    Remove objects, change backgrounds, or reimagine the lighting with a single click.
+                    Our AI Image Editing Services understand the context of your image, allowing for seamless edits that look completely natural. 
+                    We provide:
                 </p>
+                <ul className="list-disc list-inside text-gray-400 text-lg leading-relaxed">
+                    <li>AI Image Editing & Generation</li>
+                    <li>Pose Detection & Style Transfer</li>
+                    <li>Background Removal & Replacement</li>
+                    <li>Professional Photo Retouching</li>
+                </ul>
                 <div className="flex gap-4">
                     <div className="p-4 border border-white/20 rounded-full">
                         <Camera size={24} />

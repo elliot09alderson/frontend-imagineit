@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useLocalization } from '../context/LocalizationContext';
 import { Check, Zap, Crown } from 'lucide-react';
 import { API_URL } from '../config';
 import SEO from '../components/SEO';
@@ -7,7 +8,13 @@ import { apiFetch } from '../utils/api';
 
 const PricingPage = () => {
     const { user, refreshCredits, accessToken } = useAuth(); // Added token here
+    const { currency, currencySymbol, convertPrice, loading: locLoading } = useLocalization();
     const [loading, setLoading] = useState(false);
+
+    const starterPrice = currency === 'INR' ? 99 : 1.2;
+    const proPrice = currency === 'INR' ? 149 : 1.8;
+
+    if (locLoading) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Loading...</div>;
 
     const loadRazorpay = () => {
         return new Promise((resolve) => {
@@ -42,7 +49,7 @@ const PricingPage = () => {
                     'Content-Type': 'application/json',
                     'x-auth-token': accessToken
                 },
-                body: JSON.stringify({ amount, credits })
+                body: JSON.stringify({ amount, credits, currency })
             });
 
             if (!orderResponse.ok) throw new Error("Failed to create order");
@@ -52,7 +59,7 @@ const PricingPage = () => {
             const options = {
                 key: import.meta.env.VITE_RAZORPAY_KEY_ID || "YOUR_TEST_KEY_ID", // Replace with env var if available
                 amount: order.amount,
-                currency: order.currency,
+                currency: currency,
                 name: "Artistic AI Editor",
                 description: `${credits} Credits Pack`,
                 order_id: order.id,
@@ -114,10 +121,10 @@ const PricingPage = () => {
                 keywords="pricing, credits, AI art cost, affordable image editor"
             />
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-                Get More <span className="text-art-accent">Credits</span>
+                Purchase Credits for <span className="text-art-accent">AI Image Editing Services</span>
             </h1>
             <p className="text-gray-400 mb-12 text-center max-w-lg">
-                Unlock your creativity with our premium credit packs. Generate more stunning AI art today.
+                Unlock your creativity with our premium credit packs. Use credits for generating and editing images with our AI tools.
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl w-full">
@@ -133,7 +140,7 @@ const PricingPage = () => {
                         </div>
                     </div>
                     <div className="mb-6">
-                        <span className="text-4xl font-bold">₹99</span>
+                        <span className="text-4xl font-bold">{currencySymbol}{starterPrice}</span>
                     </div>
                     <ul className="space-y-3 mb-8 text-gray-300">
                         <li className="flex items-center gap-2">
@@ -146,7 +153,7 @@ const PricingPage = () => {
                         </li>
                     </ul>
                     <button 
-                        onClick={() => handlePurchase(99, 10)}
+                        onClick={() => handlePurchase(starterPrice, 10)}
                         disabled={loading}
                         className="w-full py-3 bg-white text-black font-bold rounded-xl hover:bg-art-accent hover:scale-[1.02] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
@@ -169,7 +176,7 @@ const PricingPage = () => {
                         </div>
                     </div>
                     <div className="mb-6">
-                        <span className="text-4xl font-bold">₹149</span>
+                        <span className="text-4xl font-bold">{currencySymbol}{proPrice}</span>
                     </div>
                     <ul className="space-y-3 mb-8 text-gray-300">
                         <li className="flex items-center gap-2">
@@ -186,7 +193,7 @@ const PricingPage = () => {
                         </li>
                     </ul>
                     <button 
-                        onClick={() => handlePurchase(149, 20)}
+                        onClick={() => handlePurchase(proPrice, 20)}
                         disabled={loading}
                         className="w-full py-3 bg-art-accent text-black font-bold rounded-xl hover:bg-white hover:scale-[1.02] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >

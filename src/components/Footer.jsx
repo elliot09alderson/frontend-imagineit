@@ -14,7 +14,7 @@ const Footer = () => {
                         imagineit.cloud
                     </Link>
                     <p className="text-sm text-gray-500">
-                        Unleash your creativity with AI-powered image editing and generation.
+                        Premium AI Image Editing Services. We provide automated photo retouching, style transfer, and background manipulation tools.
                     </p>
                 </div>
 
