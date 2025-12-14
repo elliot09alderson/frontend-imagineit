@@ -236,29 +236,29 @@ const LandingPage = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 text-center mix-blend-difference">
-          <h1 className="hero-text text-9xl font-serif font-bold tracking-tighter mb-4">
+        <div className="relative z-20 text-center mix-blend-difference px-4">
+          <h1 className="hero-text text-5xl md:text-9xl font-serif font-bold tracking-tighter mb-2 md:mb-4">
             REDEFINE
           </h1>
-          <h1 className="hero-text text-9xl font-serif font-bold tracking-tighter italic text-transparent stroke-white stroke-2" style={{ WebkitTextStroke: '2px white' }}>
+          <h1 className="hero-text text-5xl md:text-9xl font-serif font-bold tracking-tighter italic text-transparent stroke-white stroke-2" style={{ WebkitTextStroke: '1px white' }}>
             REALITY
           </h1>
-          <p className="hero-text mt-8 text-xl font-sans tracking-widest uppercase">
+          <p className="hero-text mt-4 md:mt-8 text-sm md:text-xl font-sans tracking-widest uppercase max-w-lg mx-auto">
             AI-Powered Image Manipulation & Editing Services
           </p>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="min-h-screen py-20 px-10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div className="space-y-8 fade-up">
-                <h2 className="text-6xl font-serif">Precision Tools</h2>
-                <p className="text-gray-400 text-lg leading-relaxed">
+      <section className="min-h-screen py-10 md:py-20 px-4 md:px-10 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
+            <div className="space-y-6 md:space-y-8 fade-up">
+                <h2 className="text-4xl md:text-6xl font-serif">Precision Tools</h2>
+                <p className="text-gray-400 text-base md:text-lg leading-relaxed">
                     Our AI Image Editing Services understand the context of your image, allowing for seamless edits that look completely natural. 
                     We provide:
                 </p>
-                <ul className="list-disc list-inside text-gray-400 text-lg leading-relaxed">
+                <ul className="list-disc list-inside text-gray-400 text-base md:text-lg leading-relaxed">
                     <li>AI Image Editing & Generation</li>
                     <li>Pose Detection & Style Transfer</li>
                     <li>Background Removal & Replacement</li>
@@ -273,7 +273,7 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="relative h-[600px] w-full overflow-hidden fade-up">
+            <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden fade-up rounded-xl">
                 <img 
                     src="/precision_tool.jpg" 
                     alt="Feature" 
@@ -284,16 +284,16 @@ const LandingPage = () => {
       </section>
 
       {/* Flagship Feature: Pose Detection */}
-      <section className="min-h-screen py-20 px-10 relative bg-art-gray">
+      <section className="min-h-screen py-10 md:py-20 px-4 md:px-10 relative bg-art-gray">
         <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20 fade-up">
-                <h2 className="text-5xl md:text-7xl font-serif mb-6">Pose Detection Magic</h2>
-                <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <div className="text-center mb-10 md:mb-20 fade-up">
+                <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif mb-4 md:mb-6">Pose Detection Magic</h2>
+                <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto">
                     Upload your image and let our ML model analyze the pose to suggest outstanding artistic styles.
                 </p>
             </div>
             
-            <div className="relative h-[80vh] w-full border border-white/10 rounded-2xl overflow-hidden fade-up">
+            <div className="relative h-[50vh] md:h-[80vh] w-full border border-white/10 rounded-2xl overflow-hidden fade-up">
                 <div className="absolute inset-0 grid grid-cols-2">
                     <div className="relative border-r border-white/10 group">
                         <img 
@@ -307,7 +307,7 @@ const LandingPage = () => {
                                 <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-art-accent"></div>
                                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-art-accent"></div>
                                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-art-accent"></div>
-                                <span className="absolute top-4 left-4 bg-art-accent text-black text-xs font-bold px-2 py-1">DETECTING POSE...</span>
+                                <span className="absolute top-4 left-4 bg-art-accent text-black text-[10px] md:text-xs font-bold px-2 py-1">DETECTING POSE...</span>
                             </div>
                         </div>
                     </div>
@@ -317,10 +317,10 @@ const LandingPage = () => {
                             alt="Generated" 
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute bottom-10 right-10 bg-black/80 backdrop-blur-md p-6 rounded-xl border border-white/10">
-                            <h4 className="text-art-accent font-bold mb-2">STYLE MATCHED</h4>
-                            <p className="text-sm text-gray-300">Cyberpunk Aesthetic</p>
-                            <p className="text-sm text-gray-300">Confidence: 98%</p>
+                        <div className="absolute bottom-4 right-4 md:bottom-10 md:right-10 bg-black/80 backdrop-blur-md p-4 md:p-6 rounded-xl border border-white/10 max-w-[150px] md:max-w-none">
+                            <h4 className="text-art-accent font-bold mb-1 md:mb-2 text-xs md:text-base">STYLE MATCHED</h4>
+                            <p className="text-xs md:text-sm text-gray-300">Cyberpunk Aesthetic</p>
+                            <p className="text-xs md:text-sm text-gray-300">Confidence: 98%</p>
                         </div>
                     </div>
                 </div>
@@ -329,41 +329,41 @@ const LandingPage = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-32 px-10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <section className="py-20 md:py-32 px-4 md:px-10 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
             {[
                 { title: "Cost Effective", desc: "Premium quality at a fraction of the studio cost.", icon: "💎" },
                 { title: "Lightning Fast", desc: "Get studio-grade results in seconds, not days.", icon: "⚡" },
                 { title: "Top Quality", desc: "High-resolution output suitable for print and digital.", icon: "✨" }
             ].map((item, i) => (
-                <div key={i} className="p-10 border border-white/10 rounded-2xl hover:bg-white/5 transition-colors duration-300 fade-up">
-                    <div className="text-4xl mb-6">{item.icon}</div>
-                    <h3 className="text-2xl font-serif mb-4">{item.title}</h3>
-                    <p className="text-gray-400">{item.desc}</p>
+                <div key={i} className="p-6 md:p-10 border border-white/10 rounded-2xl hover:bg-white/5 transition-colors duration-300 fade-up">
+                    <div className="text-3xl md:text-4xl mb-4 md:mb-6">{item.icon}</div>
+                    <h3 className="text-xl md:text-2xl font-serif mb-2 md:mb-4">{item.title}</h3>
+                    <p className="text-sm md:text-base text-gray-400">{item.desc}</p>
                 </div>
             ))}
         </div>
         
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="p-10 bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-2xl border border-white/10 fade-up">
-                <h3 className="text-3xl font-serif mb-4">Personal Branding</h3>
-                <p className="text-gray-400">Elevate your social media presence with consistent, high-end aesthetics.</p>
+        <div className="mt-10 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            <div className="p-6 md:p-10 bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-2xl border border-white/10 fade-up">
+                <h3 className="text-2xl md:text-3xl font-serif mb-2 md:mb-4">Personal Branding</h3>
+                <p className="text-sm md:text-base text-gray-400">Elevate your social media presence with consistent, high-end aesthetics.</p>
             </div>
-            <div className="p-10 bg-gradient-to-br from-orange-900/20 to-red-900/20 rounded-2xl border border-white/10 fade-up">
-                <h3 className="text-3xl font-serif mb-4">Product Photoshoot</h3>
-                <p className="text-gray-400">Turn simple product shots into commercial masterpieces without a studio.</p>
+            <div className="p-6 md:p-10 bg-gradient-to-br from-orange-900/20 to-red-900/20 rounded-2xl border border-white/10 fade-up">
+                <h3 className="text-2xl md:text-3xl font-serif mb-2 md:mb-4">Product Photoshoot</h3>
+                <p className="text-sm md:text-base text-gray-400">Turn simple product shots into commercial masterpieces without a studio.</p>
             </div>
         </div>
       </section>
 
       {/* Technical Deep Dive */}
-      <section className="py-32 px-10 relative bg-black overflow-hidden">
+      <section className="py-20 md:py-32 px-4 md:px-10 relative bg-black overflow-hidden">
         <div className="max-w-5xl mx-auto">
             <div className="fade-up group relative">
-                <h2 className="text-5xl md:text-7xl font-serif font-bold leading-tight mb-10 relative z-10 text-white mix-blend-difference cursor-default tracking-tight" data-text="PRECISION ARCHITECTURE">
+                <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold leading-tight mb-6 md:mb-10 relative z-10 text-white mix-blend-difference cursor-default tracking-tight" data-text="PRECISION ARCHITECTURE">
                     PRECISION ARCHITECTURE
                 </h2>
-                <p className="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-4xl relative z-10 font-sans font-light">
+                <p className="text-base md:text-2xl text-gray-400 leading-relaxed max-w-4xl relative z-10 font-sans font-light">
                     Our system bypasses traditional generation methods by leveraging <span className="text-white font-medium">ML KIT</span> for high-fidelity <span className="text-white font-medium">Posture Analysis</span> and <span className="text-white font-medium">Pose Detection</span>. 
                     This enables <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 font-bold">exact numerical matching</span> of skeletal vectors, eliminating the variance of LLM textual interpretation. 
                     We utilize <span className="text-white font-medium">Pre-Generated Data</span> for rigorous <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 font-bold">Quality Control</span>, ensuring every pixel is synthesized with deterministic accuracy.
@@ -376,26 +376,26 @@ const LandingPage = () => {
       </section>
 
       {/* Technology */}
-      <section className="py-32 px-10 relative bg-black text-center border-t border-white/10">
-        <h2 className="text-sm font-sans tracking-[0.5em] text-gray-500 mb-10 uppercase fade-up">Powered By</h2>
+      <section className="py-20 md:py-32 px-4 md:px-10 relative bg-black text-center border-t border-white/10">
+        <h2 className="text-xs md:text-sm font-sans tracking-[0.5em] text-gray-500 mb-6 md:mb-10 uppercase fade-up">Powered By</h2>
         <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-40 opacity-80 fade-up">
             <div className="text-center group cursor-default">
-                <h3 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-600 group-hover:scale-110 group-hover:skew-x-6 transition-all duration-1000 ease-out">ML KIT</h3>
-                <p className="mt-4 text-gray-500 tracking-widest group-hover:text-emerald-400 transition-colors">NUMERICAL POSE ANALYSIS</p>
+                <h3 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-600 group-hover:scale-110 group-hover:skew-x-6 transition-all duration-1000 ease-out">ML KIT</h3>
+                <p className="mt-2 md:mt-4 text-xs md:text-base text-gray-500 tracking-widest group-hover:text-emerald-400 transition-colors">NUMERICAL POSE ANALYSIS</p>
             </div>
             <div className="w-32 h-px md:w-px md:h-32 bg-white/20"></div>
             <div className="text-center group cursor-default">
-                <h3 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600 group-hover:scale-110 group-hover:-skew-x-6 transition-all duration-1000 ease-out">PRE-GEN</h3>
-                <p className="mt-4 text-gray-500 tracking-widest group-hover:text-violet-400 transition-colors">QUALITY CONTROLLED DATA</p>
+                <h3 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-600 group-hover:scale-110 group-hover:-skew-x-6 transition-all duration-1000 ease-out">PRE-GEN</h3>
+                <p className="mt-2 md:mt-4 text-xs md:text-base text-gray-500 tracking-widest group-hover:text-violet-400 transition-colors">QUALITY CONTROLLED DATA</p>
             </div>
         </div>
       </section>
 
        {/* Showcase Section */}
-       <section className="min-h-screen py-20 px-10 relative bg-art-gray">
-            <h2 className="text-8xl font-serif text-center mb-20 fade-up">CREATE</h2>
+       <section className="min-h-screen py-10 md:py-20 px-4 md:px-10 relative bg-art-gray">
+            <h2 className="text-5xl md:text-8xl font-serif text-center mb-10 md:mb-20 fade-up">CREATE</h2>
             
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-0">
+            <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 px-0 md:px-0">
                 <AnimatePresence>
                     {displayedImages.map((image) => (
                         <motion.div 
@@ -423,16 +423,16 @@ const LandingPage = () => {
        </section>
 
        {/* Reviews Section (Horizontal Scroll) */}
-       <section className="reviews-section py-20 bg-white text-black overflow-hidden relative">
-            <div className="mb-20 px-10 fade-up">
-                <h2 className="text-6xl font-serif">Voices of Art</h2>
+       <section className="reviews-section py-10 md:py-20 bg-white text-black overflow-hidden relative">
+            <div className="mb-10 md:mb-20 px-4 md:px-10 fade-up">
+                <h2 className="text-4xl md:text-6xl font-serif">Voices of Art</h2>
             </div>
             
             {/* Vignette Effect */}
-            <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-8 md:w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-8 md:w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-            <div className="reviews-container flex gap-10 px-10 w-fit">
+            <div className="reviews-container flex gap-4 md:gap-10 px-4 md:px-10 w-fit">
                 {[
                     {
                         name: "Elena R.",
@@ -460,17 +460,17 @@ const LandingPage = () => {
                         text: "Being able to visualize my designs on different poses instantly has saved me weeks of work. The lighting adaptation is surreal."
                     }
                 ].map((review, i) => (
-                    <div key={i} className="w-[400px] md:w-[600px] flex-shrink-0 p-10 bg-gray-100 rounded-2xl border border-gray-200">
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white font-bold">
+                    <div key={i} className="w-[300px] md:w-[600px] flex-shrink-0 p-6 md:p-10 bg-gray-100 rounded-2xl border border-gray-200">
+                        <div className="flex items-center gap-4 mb-4 md:mb-6">
+                            <div className="w-10 h-10 md:w-12 md:h-12 bg-black rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base">
                                 {review.name[0]}
                             </div>
                             <div>
-                                <h4 className="font-bold">{review.name}</h4>
-                                <p className="text-sm text-gray-500">{review.role}</p>
+                                <h4 className="font-bold text-sm md:text-base">{review.name}</h4>
+                                <p className="text-xs md:text-sm text-gray-500">{review.role}</p>
                             </div>
                         </div>
-                        <p className="text-xl font-serif leading-relaxed">
+                        <p className="text-base md:text-xl font-serif leading-relaxed">
                             "{review.text}"
                         </p>
                     </div>
@@ -479,73 +479,73 @@ const LandingPage = () => {
        </section>
 
        {/* Business Idea & Newsletter */}
-       <section className="min-h-screen flex flex-col items-center justify-center py-20 px-10 relative">
+       <section className="min-h-screen flex flex-col items-center justify-center py-10 md:py-20 px-4 md:px-10 relative">
             
             {/* Morphing Business Form */}
-            <div className="w-full max-w-2xl mb-32 business-section">
+            <div className="w-full max-w-2xl mb-20 md:mb-32 business-section">
                 <div className="bg-gradient-to-r from-art-gray to-black p-1 rounded-2xl">
-                    <div className="bg-black p-10 rounded-xl text-center group hover:bg-art-gray/50 transition-colors duration-500">
-                        <h2 className="text-4xl font-serif mb-6">Have a Business Idea?</h2>
-                        <p className="text-gray-400 mb-8">Let's collaborate to build the next big thing in AI art.</p>
+                    <div className="bg-black p-6 md:p-10 rounded-xl text-center group hover:bg-art-gray/50 transition-colors duration-500">
+                        <h2 className="text-2xl md:text-4xl font-serif mb-4 md:mb-6">Have a Business Idea?</h2>
+                        <p className="text-sm md:text-base text-gray-400 mb-6 md:mb-8">Let's collaborate to build the next big thing in AI art.</p>
                         <form onSubmit={handleProposalSubmit} className="space-y-4 text-left hidden group-hover:block transition-all duration-500">
                             <input 
                                 type="text" 
                                 placeholder="Your Name" 
                                 value={proposal.name}
                                 onChange={(e) => setProposal({...proposal, name: e.target.value})}
-                                className="w-full bg-transparent border-b border-white/20 p-4 focus:border-white outline-none transition-colors" 
+                                className="w-full bg-transparent border-b border-white/20 p-3 md:p-4 focus:border-white outline-none transition-colors text-sm md:text-base" 
                             />
                             <input 
                                 type="email" 
                                 placeholder="Email Address" 
                                 value={proposal.email}
                                 onChange={(e) => setProposal({...proposal, email: e.target.value})}
-                                className="w-full bg-transparent border-b border-white/20 p-4 focus:border-white outline-none transition-colors" 
+                                className="w-full bg-transparent border-b border-white/20 p-3 md:p-4 focus:border-white outline-none transition-colors text-sm md:text-base" 
                             />
                             <textarea 
                                 placeholder="Tell us about your idea..." 
                                 value={proposal.idea}
                                 onChange={(e) => setProposal({...proposal, idea: e.target.value})}
-                                className="w-full bg-transparent border-b border-white/20 p-4 focus:border-white outline-none transition-colors h-32"
+                                className="w-full bg-transparent border-b border-white/20 p-3 md:p-4 focus:border-white outline-none transition-colors h-24 md:h-32 text-sm md:text-base"
                             ></textarea>
-                            <button disabled={loading} className="w-full py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                            <button disabled={loading} className="w-full py-3 md:py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors text-sm md:text-base">
                                 {loading ? 'Submitting...' : 'Submit Proposal'}
                             </button>
                         </form>
-                        <button className="px-8 py-3 border border-white rounded-full group-hover:hidden">Start Collaboration</button>
+                        <button className="px-6 py-2 md:px-8 md:py-3 border border-white rounded-full group-hover:hidden text-sm md:text-base">Start Collaboration</button>
                     </div>
                 </div>
             </div>
 
             {/* Newsletter */}
-            <div className="text-center max-w-xl mx-auto fade-up">
-                <h2 className="text-3xl font-serif mb-6">Stay Inspired</h2>
-                <p className="text-gray-400 mb-8">Join our newsletter for weekly art tips and feature updates.</p>
+            <div className="text-center max-w-xl mx-auto fade-up w-full">
+                <h2 className="text-2xl md:text-3xl font-serif mb-4 md:mb-6">Stay Inspired</h2>
+                <p className="text-sm md:text-base text-gray-400 mb-6 md:mb-8">Join our newsletter for weekly art tips and feature updates.</p>
                 <div className="flex gap-4 border-b border-white/20 pb-2 focus-within:border-white transition-colors">
                     <input 
                         type="text" 
                         placeholder="Email or Phone Number" 
                         value={subscriberContact}
                         onChange={(e) => setSubscriberContact(e.target.value)}
-                        className="bg-transparent w-full outline-none text-lg" 
+                        className="bg-transparent w-full outline-none text-base md:text-lg" 
                     />
-                    <button onClick={handleSubscribe} className="text-sm uppercase tracking-widest hover:text-gray-300">Subscribe</button>
+                    <button onClick={handleSubscribe} className="text-xs md:text-sm uppercase tracking-widest hover:text-gray-300">Subscribe</button>
                 </div>
             </div>
 
        </section>
 
-       <footer className="py-20 px-10 border-t border-white/10 bg-black relative overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 mb-20">
+       <footer className="py-10 md:py-20 px-4 md:px-10 border-t border-white/10 bg-black relative overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 mb-10 md:mb-20">
                 <div>
-                    <h2 className="text-8xl font-serif mb-10 leading-[0.8]">
+                    <h2 className="text-5xl md:text-8xl font-serif mb-6 md:mb-10 leading-[0.8]">
                         LET'S <br/>
                         <span className="italic text-gray-500">CREATE</span>
                     </h2>
-                    <div className="flex gap-4">
+                    <div className="flex flex-wrap gap-2 md:gap-4">
                         {['Instagram', 'Twitter', 'LinkedIn', 'Dribbble'].map((social) => (
                             <MagneticButton key={social} className="group">
-                                <a href="#" className="px-6 py-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-colors duration-300 block">
+                                <a href="#" className="px-4 py-2 md:px-6 md:py-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-colors duration-300 block text-sm md:text-base">
                                     {social}
                                 </a>
                             </MagneticButton>
@@ -553,20 +553,20 @@ const LandingPage = () => {
                     </div>
                 </div>
                 <div className="flex flex-col justify-end items-start md:items-end">
-                    <p className="text-xl text-gray-400 max-w-sm text-left md:text-right mb-10">
+                    <p className="text-lg md:text-xl text-gray-400 max-w-sm text-left md:text-right mb-6 md:mb-10">
                         Experience the future of image editing. Join our community of creators today.
                     </p>
                     <MagneticButton>
-                        <button className="w-32 h-32 bg-art-accent rounded-full text-black font-bold text-lg hover:scale-110 transition-transform duration-300">
+                        <button className="w-24 h-24 md:w-32 md:h-32 bg-art-accent rounded-full text-black font-bold text-sm md:text-lg hover:scale-110 transition-transform duration-300">
                             Get App
                         </button>
                     </MagneticButton>
                 </div>
             </div>
             
-            <div className="flex justify-between items-end text-sm text-gray-600 uppercase tracking-widest">
+            <div className="flex flex-col md:flex-row justify-between items-end text-xs md:text-sm text-gray-600 uppercase tracking-widest gap-4">
                 <p>© 2025 imagineit.cloud Image Editor</p>
-                <div className="flex gap-8">
+                <div className="flex gap-4 md:gap-8">
                     <a href="#" className="hover:text-white transition-colors">Privacy</a>
                     <a href="#" className="hover:text-white transition-colors">Terms</a>
                 </div>

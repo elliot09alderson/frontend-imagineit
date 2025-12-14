@@ -7,7 +7,7 @@ import VerifyPage from './pages/VerifyPage';
 import CommunityPage from './pages/CommunityPage';
 import LiteEditPage from './pages/LiteEditPage';
 import EditPage from './pages/EditPage';
-import AdminPage from './pages/AdminPage';
+import AdminPage from './pages/AdminPage';        
 import ComingSoonPage from './pages/ComingSoonPage';
 import PricingPage from './pages/PricingPage';
 import Footer from './components/Footer';

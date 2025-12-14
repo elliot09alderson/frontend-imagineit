@@ -127,7 +127,7 @@ const PricingPage = () => {
                 Unlock your creativity with our premium credit packs. Use credits for generating and editing images with our AI tools.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
                 {/* Basic Pack */}
                 <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 hover:border-art-accent/50 transition-all duration-300">
                     <div className="flex justify-between items-start mb-4">

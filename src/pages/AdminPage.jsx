@@ -196,7 +196,7 @@ const AdminPage = () => {
                 onChange={(e) => setFormData({...formData, pose_category: e.target.value})}
                 className="w-full bg-black border border-white/20 rounded-lg p-3 focus:border-art-accent outline-none"
               >
-                {['FRONT_FULL_BODY', 'SIDE_PROFILE', 'BACK_VIEW', 'SITTING', 'CLOSE_UP_PORTRAIT', 'ACTION_SHOT'].map(cat => (
+                {['FRONT_FULL_BODY', 'SIDE_PROFILE', 'BACK_VIEW', 'SITTING', 'CLOSE_UP_PORTRAIT'].map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>

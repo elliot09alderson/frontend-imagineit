@@ -4,8 +4,15 @@
 
 @layer base {
   body {
-    @apply bg-art-black text-white antialiased cursor-none;
+    @apply bg-art-black text-white antialiased cursor-none overflow-x-hidden;
     font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+  }
+}
+
+@layer utilities {
+  .container-responsive {
+    @apply px-4 md:px-10 max-w-7xl mx-auto;
   }
 }
 

@@ -114,23 +114,23 @@ const EditPage = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto min-h-[600px] bg-white/5 rounded-3xl border border-white/10 relative overflow-hidden flex flex-col items-center justify-center p-10">
+      <div className="max-w-7xl mx-auto min-h-[500px] md:min-h-[600px] bg-white/5 rounded-2xl md:rounded-3xl border border-white/10 relative overflow-hidden flex flex-col items-center justify-center p-4 md:p-10">
         
         {/* Step 1: Upload */}
         {step === 1 && (
-            <div className="text-center flex flex-col items-center gap-8 fade-up">
-                <div className="w-32 h-32 bg-white/5 rounded-full flex items-center justify-center mx-auto border border-dashed border-white/30">
-                    <Upload size={40} className="text-gray-400" />
+            <div className="text-center flex flex-col items-center gap-6 md:gap-8 fade-up w-full">
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-white/5 rounded-full flex items-center justify-center mx-auto border border-dashed border-white/30">
+                    <Upload size={32} className="text-gray-400 md:w-10 md:h-10" />
                 </div>
                 <div>
-                    <h2 className="text-3xl font-serif mb-4">Upload Your Photo</h2>
-                    <p className="text-gray-400 max-w-md mx-auto">
+                    <h2 className="text-2xl md:text-3xl font-serif mb-2 md:mb-4">Upload Your Photo</h2>
+                    <p className="text-gray-400 max-w-md mx-auto text-sm md:text-base px-4">
                         For best results, use a clear image with good lighting. Our AI will detect your pose automatically.
                     </p>
                 </div>
-                <label className="cursor-pointer">
+                <label className="cursor-pointer w-full md:w-auto">
                     <MagneticButton>
-                        <div className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors">
+                        <div className="px-6 py-3 md:px-8 md:py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors w-full md:w-auto text-center">
                             Select Image
                         </div>
                     </MagneticButton>
@@ -141,26 +141,26 @@ const EditPage = () => {
 
         {/* Step 2: Analyzing */}
         {step === 2 && (
-            <div className="text-center space-y-6 fade-up">
+            <div className="text-center space-y-4 md:space-y-6 fade-up">
                 {/* Show uploaded image preview */}
                 {userImage && (
-                    <div className="relative w-64 h-64 mx-auto rounded-xl overflow-hidden border-2 border-art-accent/50 mb-6">
+                    <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto rounded-xl overflow-hidden border-2 border-art-accent/50 mb-4 md:mb-6">
                         <img src={userImage} alt="Your upload" className="w-full h-full object-cover" />
                     </div>
                 )}
-                <Loader size={60} className="animate-spin text-art-accent mx-auto" />
-                <h2 className="text-2xl font-serif">Analyzing Pose...</h2>
-                <p className="text-gray-400">Identifying structure and composition</p>
+                <Loader size={48} className="animate-spin text-art-accent mx-auto md:w-[60] md:h-[60]" />
+                <h2 className="text-xl md:text-2xl font-serif">Analyzing Pose...</h2>
+                <p className="text-sm md:text-base text-gray-400">Identifying structure and composition</p>
             </div>
         )}
 
         {/* Step 3: Selection */}
         {step === 3 && (
             <div className="w-full h-full flex flex-col fade-up">
-                <div className="flex justify-between items-end mb-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-8 gap-4">
                     <div>
-                        <h2 className="text-3xl font-serif mb-2">Select a Style</h2>
-                        <p className="text-gray-400">Detected Pose: <span className="text-art-accent font-bold">{poseCategory}</span></p>
+                        <h2 className="text-2xl md:text-3xl font-serif mb-1 md:mb-2">Select a Style</h2>
+                        <p className="text-sm md:text-base text-gray-400">Detected Pose: <span className="text-art-accent font-bold capitalize">{poseCategory?.toLowerCase()}</span></p>
                     </div>
                     {selectedMatch && (
                         <button 
@@ -171,13 +171,13 @@ const EditPage = () => {
                                     generateEdit();
                                 }
                             }}
-                            className={`px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all ${
+                            className={`w-full md:w-auto px-6 py-3 md:px-8 md:py-3 rounded-full font-bold flex items-center justify-center gap-2 transition-all ${
                                 credits >= 2 
                                 ? 'bg-art-accent text-black hover:bg-white' 
                                 : 'bg-red-500 text-white hover:bg-red-600'
                             }`}
                         >
-                            <Wand2 size={20} />
+                            <Wand2 size={18} className="md:w-5 md:h-5" />
                             {credits >= 2 ? 'Generate (2 Credits)' : 'Buy Credits'}
                         </button>
                     )}
@@ -185,25 +185,25 @@ const EditPage = () => {
 
                 {/* Show user's uploaded image */}
                 {userImage && (
-                    <div className="mb-6">
-                        <p className="text-sm text-gray-400 mb-2">Your Photo:</p>
-                        <div className="relative w-48 h-48 rounded-xl overflow-hidden border-2 border-white/20">
+                    <div className="mb-4 md:mb-6">
+                        <p className="text-xs md:text-sm text-gray-400 mb-2">Your Photo:</p>
+                        <div className="relative w-24 h-24 md:w-48 md:h-48 rounded-lg md:rounded-xl overflow-hidden border-2 border-white/20">
                             <img src={userImage} alt="Your upload" className="w-full h-full object-cover" />
                         </div>
                     </div>
                 )}
 
-                <p className="text-sm text-gray-400 mb-4">Choose a style to apply:</p>
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-6 flex-1">
+                <p className="text-xs md:text-sm text-gray-400 mb-3 md:mb-4">Choose a style to apply:</p>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 flex-1 pb-4">
                     {matches.map((match) => (
                         <div 
                             key={match._id}
                             onClick={() => setSelectedMatch(match)}
-                            className={`relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 border-2 ${selectedMatch?._id === match._id ? 'border-art-accent scale-105' : 'border-transparent hover:border-white/30'}`}
+                            className={`relative aspect-[3/4] rounded-lg md:rounded-xl overflow-hidden cursor-pointer transition-all duration-300 border-2 ${selectedMatch?._id === match._id ? 'border-art-accent scale-95 md:scale-105' : 'border-transparent hover:border-white/30'}`}
                         >
                             <img src={match.cloudinary_url} alt="Style" className="w-full h-full object-cover" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                                <p className="text-xs text-gray-300 line-clamp-2">{match.preedited_prompt}</p>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-2 md:p-4">
+                                <p className="text-[10px] md:text-xs text-gray-300 line-clamp-2">{match.preedited_prompt}</p>
                             </div>
                         </div>
                     ))}
@@ -213,31 +213,31 @@ const EditPage = () => {
 
         {/* Step 4: Generating */}
         {step === 4 && (
-            <div className="text-center space-y-8 fade-up">
-                <div className="relative w-40 h-40 mx-auto">
+            <div className="text-center space-y-6 md:space-y-8 fade-up">
+                <div className="relative w-24 h-24 md:w-40 md:h-40 mx-auto">
                     <div className="absolute inset-0 border-4 border-white/10 rounded-full"></div>
                     <div className="absolute inset-0 border-4 border-t-art-accent rounded-full animate-spin"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <Wand2 size={40} className="text-white animate-pulse" />
+                        <Wand2 size={32} className="text-white animate-pulse md:w-10 md:h-10" />
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-3xl font-serif mb-2">Creating Masterpiece</h2>
-                    <p className="text-gray-400">Applying style transfer and lighting adjustments...</p>
+                    <h2 className="text-2xl md:text-3xl font-serif mb-2">Creating Masterpiece</h2>
+                    <p className="text-sm md:text-base text-gray-400">Applying style transfer and lighting adjustments...</p>
                 </div>
             </div>
         )}
 
         {/* Step 5: Result */}
         {step === 5 && (
-            <div className="w-full h-full flex flex-col items-center fade-up">
-                <div className="relative w-full max-w-2xl aspect-[3/4] rounded-xl overflow-hidden mb-8 border border-white/20 shadow-2xl shadow-art-accent/20">
+            <div className="w-full h-full flex flex-col items-center fade-up pb-10">
+                <div className="relative w-full max-w-md md:max-w-2xl aspect-[3/4] rounded-xl overflow-hidden mb-6 md:mb-8 border border-white/20 shadow-2xl shadow-art-accent/20">
                     <img src={resultImage} alt="Generated Art" className="w-full h-full object-cover" />
                 </div>
-                <div className="flex gap-4">
+                <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto px-4 md:px-0">
                     <button 
                         onClick={() => setStep(1)}
-                        className="px-8 py-3 border border-white/20 rounded-full hover:bg-white/10 transition-colors"
+                        className="w-full md:w-auto px-6 py-3 border border-white/20 rounded-full hover:bg-white/10 transition-colors text-center"
                     >
                         Start Over
                     </button>
@@ -259,7 +259,7 @@ const EditPage = () => {
                                 window.open(resultImage, '_blank');
                             }
                         }}
-                        className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2"
+                        className="w-full md:w-auto px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
                     >
                         <Download size={20} />
                         Download High-Res

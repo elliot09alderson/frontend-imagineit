@@ -18,8 +18,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between items-center mix-blend-difference text-white">
-        <Link to="/" className="text-2xl font-serif font-bold tracking-tighter hidden md:block">
+      <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-10 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white">
+        <Link to="/" className="text-xl md:text-2xl font-serif font-bold tracking-tighter block z-50 relative">
           imagineit.cloud
         </Link>
         {/* Desktop Menu */}
@@ -44,14 +44,21 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Hamburger */}
-        <button onClick={toggleMenu} className="md:hidden z-50 relative">
+        <button onClick={toggleMenu} className="md:hidden z-50 relative p-2 focus:outline-none">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 
       {/* Mobile Sidebar */}
-      <div className={`fixed inset-0 bg-black z-40 flex flex-col items-center justify-center transition-transform duration-300 md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="flex flex-col gap-10 font-sans uppercase tracking-widest items-center">
+      {/* Mobile Sidebar Backdrop */}
+      <div 
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={toggleMenu}
+      />
+
+      {/* Mobile Sidebar Drawer */}
+      <div className={`fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-zinc-950 border-l border-white/10 z-50 flex flex-col items-center justify-center transition-transform duration-300 md:hidden shadow-2xl ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col gap-8 font-sans uppercase tracking-widest items-center w-full px-6">
             <Link to="/" onClick={toggleMenu} className={linkClass('/')}>Home</Link>
             {isAuthenticated && (
                 <Link to="/edit" onClick={toggleMenu} className={linkClass('/edit')}>Edit</Link>
@@ -64,7 +71,7 @@ const Navbar = () => {
                         <Link to="/admin" onClick={toggleMenu} className={linkClass('/admin')}>Styles</Link>
                     )}
                     <Link to="/lite-edit" onClick={toggleMenu} className={linkClass('/lite-edit')}>Go Lite</Link>
-                    <button onClick={() => { logout(); toggleMenu(); }} className="text-2xl font-bold text-red-500 hover:text-red-400 transition-colors mt-4">Logout</button>
+                    <button onClick={() => { logout(); toggleMenu(); }} className="text-xl font-bold text-red-500 hover:text-red-400 transition-colors mt-8 border px-6 py-2 rounded-full border-red-500/30 hover:bg-red-500/10">Logout</button>
                 </>
             ) : (
                 <Link to="/login" onClick={toggleMenu} className={linkClass('/login')}>Login</Link>
