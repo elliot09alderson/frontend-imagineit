@@ -17,6 +17,7 @@ const EditPage = () => {
   const [selectedMatch, setSelectedMatch] = useState(null);
   const [resultImage, setResultImage] = useState(null);
   const [poseCategory, setPoseCategory] = useState('');
+  const [additionalPrompt, setAdditionalPrompt] = useState('');
 
   // Fetch credits on load
   useEffect(() => {
@@ -84,6 +85,7 @@ const EditPage = () => {
         body: JSON.stringify({ 
           // email: 'demo@user.com',
           preedited_prompt: selectedMatch.preedited_prompt,
+          additional_prompt: additionalPrompt,
           userImageUrl: uploadedImageUrl // Use Cloudinary URL, not Base64 
         })
       });
@@ -163,23 +165,25 @@ const EditPage = () => {
                         <p className="text-sm md:text-base text-gray-400">Detected Pose: <span className="text-art-accent font-bold capitalize">{poseCategory?.toLowerCase()}</span></p>
                     </div>
                     {selectedMatch && (
-                        <button 
-                            onClick={() => {
-                                if (credits < 2) {
-                                    navigate('/pricing');
-                                } else {
-                                    generateEdit();
-                                }
-                            }}
-                            className={`w-full md:w-auto px-6 py-3 md:px-8 md:py-3 rounded-full font-bold flex items-center justify-center gap-2 transition-all ${
-                                credits >= 2 
-                                ? 'bg-art-accent text-black hover:bg-white' 
-                                : 'bg-red-500 text-white hover:bg-red-600'
-                            }`}
-                        >
-                            <Wand2 size={18} className="md:w-5 md:h-5" />
-                            {credits >= 2 ? 'Generate (2 Credits)' : 'Buy Credits'}
-                        </button>
+                        <div className="flex flex-col items-end gap-2 w-full md:w-auto">
+                            <button 
+                                onClick={() => {
+                                    if (credits < 2) {
+                                        navigate('/pricing');
+                                    } else {
+                                        generateEdit();
+                                    }
+                                }}
+                                className={`w-full md:w-auto px-6 py-3 md:px-8 md:py-3 rounded-full font-bold flex items-center justify-center gap-2 transition-all ${
+                                    credits >= 2 
+                                    ? 'bg-art-accent text-black hover:bg-white' 
+                                    : 'bg-red-500 text-white hover:bg-red-600'
+                                }`}
+                            >
+                                <Wand2 size={18} className="md:w-5 md:h-5" />
+                                {credits >= 2 ? 'Generate (2 Credits)' : 'Buy Credits'}
+                            </button>
+                        </div>
                     )}
                 </div>
 
@@ -192,6 +196,22 @@ const EditPage = () => {
                         </div>
                     </div>
                 )}
+                
+                {/* Additional Prompt Input */}
+                 <div className="mb-6">
+                    <label className="text-xs md:text-sm text-gray-400 mb-2 block">Additional Instructions (Optional, max 100 words):</label>
+                    <textarea 
+                        value={additionalPrompt}
+                        onChange={(e) => {
+                            const words = e.target.value.trim().split(/\s+/);
+                            if (words.length <= 100) {
+                                setAdditionalPrompt(e.target.value);
+                            }
+                        }}
+                        placeholder="e.g., Make the lighting darker, add neon rain..."
+                        className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-sm focus:border-art-accent outline-none resize-none h-20"
+                    />
+                </div>
 
                 <p className="text-xs md:text-sm text-gray-400 mb-3 md:mb-4">Choose a style to apply:</p>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 flex-1 pb-4">
@@ -236,7 +256,10 @@ const EditPage = () => {
                 </div>
                 <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto px-4 md:px-0">
                     <button 
-                        onClick={() => setStep(1)}
+                        onClick={() => {
+                            setStep(1);
+                            setAdditionalPrompt('');
+                        }}
                         className="w-full md:w-auto px-6 py-3 border border-white/20 rounded-full hover:bg-white/10 transition-colors text-center"
                     >
                         Start Over

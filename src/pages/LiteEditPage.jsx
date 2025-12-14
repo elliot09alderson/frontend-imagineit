@@ -16,6 +16,7 @@ const LiteEditPage = () => {
   const [selectedMatch, setSelectedMatch] = useState(null);
   const [resultImage, setResultImage] = useState(null);
   const [poseCategory, setPoseCategory] = useState('');
+  const [additionalPrompt, setAdditionalPrompt] = useState('');
 
   // Fetch credits on load
   useEffect(() => {
@@ -83,6 +84,7 @@ const LiteEditPage = () => {
         body: JSON.stringify({ 
           // email: 'demo@user.com',
           preedited_prompt: selectedMatch.preedited_prompt,
+          additional_prompt: additionalPrompt,
           userImageUrl: userImage 
         })
       });
@@ -167,23 +169,25 @@ const LiteEditPage = () => {
                         <p className="text-gray-400">Detected Pose: <span className="text-art-accent font-bold">{poseCategory}</span></p>
                     </div>
                     {selectedMatch && (
-                        <button 
-                            onClick={() => {
-                                if (credits < 1) {
-                                    navigate('/pricing');
-                                } else {
-                                    generateLiteEdit();
-                                }
-                            }}
-                            className={`px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all ${
-                                credits >= 1 
-                                ? 'bg-art-accent text-black hover:scale-105' 
-                                : 'bg-red-500 text-white hover:bg-red-600'
-                            }`}
-                        >
-                            <Wand2 size={20} />
-                            {credits >= 1 ? 'Generate Lite (1 Credit)' : 'Buy Credits'}
-                        </button>
+                        <div className="flex flex-col items-end gap-2 text-right">
+                            <button 
+                                onClick={() => {
+                                    if (credits < 1) {
+                                        navigate('/pricing');
+                                    } else {
+                                        generateLiteEdit();
+                                    }
+                                }}
+                                className={`px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all ${
+                                    credits >= 1 
+                                    ? 'bg-art-accent text-black hover:scale-105' 
+                                    : 'bg-red-500 text-white hover:bg-red-600'
+                                }`}
+                            >
+                                <Wand2 size={20} />
+                                {credits >= 1 ? 'Generate Lite (1 Credit)' : 'Buy Credits'}
+                            </button>
+                        </div>
                     )}
                 </div>
 
@@ -196,6 +200,22 @@ const LiteEditPage = () => {
                         </div>
                     </div>
                 )}
+                
+                {/* Additional Prompt Input */}
+                 <div className="mb-6">
+                    <label className="text-sm text-gray-400 mb-2 block">Additional Instructions (Optional, max 100 words):</label>
+                    <textarea 
+                        value={additionalPrompt}
+                        onChange={(e) => {
+                             const words = e.target.value.trim().split(/\s+/);
+                            if (words.length <= 100) {
+                                setAdditionalPrompt(e.target.value);
+                            }
+                        }}
+                        placeholder="e.g., Make the lighting darker, add neon rain..."
+                        className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-sm focus:border-art-accent outline-none resize-none h-20"
+                    />
+                </div>
 
                 <p className="text-sm text-gray-400 mb-4">Choose a style to apply:</p>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-6 flex-1">
@@ -245,6 +265,7 @@ const LiteEditPage = () => {
                             setUserImage(null);
                             setResultImage(null);
                             setSelectedMatch(null);
+                            setAdditionalPrompt('');
                         }}
                         className="px-8 py-3 border border-white/20 rounded-full hover:bg-white/10 transition-colors"
                     >
